@@ -22,9 +22,9 @@ package org.elasticsearch.cloud.azure.blobstore;
 import com.microsoft.windowsazure.services.core.ServiceException;
 import com.microsoft.windowsazure.services.core.storage.StorageException;
 import org.elasticsearch.cloud.azure.AzureStorageService;
+import org.elasticsearch.common.blobstore.BlobContainer;
 import org.elasticsearch.common.blobstore.BlobPath;
 import org.elasticsearch.common.blobstore.BlobStore;
-import org.elasticsearch.common.blobstore.ImmutableBlobContainer;
 import org.elasticsearch.common.component.AbstractComponent;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.ByteSizeUnit;
@@ -81,7 +81,7 @@ public class AzureBlobStore extends AbstractComponent implements BlobStore {
     }
 
     @Override
-    public ImmutableBlobContainer immutableBlobContainer(BlobPath path) {
+    public BlobContainer blobContainer(BlobPath path) {
         return new AzureImmutableBlobContainer(path, this);
     }
 
